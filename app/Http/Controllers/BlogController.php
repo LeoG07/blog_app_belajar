@@ -56,6 +56,7 @@ class BlogController extends Controller
         $comments = DB::table('comment')
         ->select('*')
         ->where('post_id', '=', $id)
+        ->where('comment_approve', '=', 1)
         ->get();
 
         return view('blog.post.post',compact('posts', 'comments', 'post'));

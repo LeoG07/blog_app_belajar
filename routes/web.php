@@ -6,7 +6,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -75,3 +75,9 @@ Route::get('register', [RegisterController::class, 'register'])->name('register'
 Route::post('register', [RegisterController::class, 'register_action'])->name('register.action');
 
 Route::post('comment', [BlogController::class, 'comment'])->name('comment');
+
+// Route::get('admin/comments', PostController::class, 'comments')->middleware('auth');
+
+Route::get('/admin/comments', [CommentController::class, 'index']) ;
+
+Route::post('/admin/comments/{id}', [CommentController::class, 'update']) ;

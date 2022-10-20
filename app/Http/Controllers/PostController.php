@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Blog;
 
 class PostController extends Controller
 {
@@ -19,6 +22,7 @@ class PostController extends Controller
         return view('admin.posts.index',compact('posts'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -59,6 +63,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('admin.posts.show',compact('post'));
+
+        
     }
 
     /**
