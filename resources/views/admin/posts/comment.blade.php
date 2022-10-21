@@ -19,17 +19,17 @@
 <tr> 
 <th width="200px" class="text-center">Nama Komentar</th> 
 <th class="text-center">Isi Komentar</th> 
-<th width="280px"class="text-center">Judul Artikel</th> 
+<th width="340px"class="text-center">Judul Artikel</th> 
 <th class="text-center">Action</th>
 
-</tr> 0
+</tr> 
 
-<?php foreach ( array_merge ($posts,$comments as $post)){ ?>
+@foreach($posts as $post)
 <tr> 
 <!-- -->
 <td>{{ $post->name }}</td> 
 <td>{{ $post->comment }}</td> 
-<td>{{ $post->title }} ({{ $comment->id }}) </td> 
+<td>{{ $post->title }} ({{ $post->id }} comment.id) </td> 
 <td class="text-center"> 
 	
 	<form action="{{ url('') }}/admin/comments/<?php echo $post->id ?>" method="POST"> 
@@ -52,7 +52,8 @@
 </form> 
 </td> 
 </tr> 
-<?php }; ?> 
+
+@endforeach 
 
 </table> 
 

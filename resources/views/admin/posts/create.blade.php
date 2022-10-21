@@ -14,7 +14,6 @@
 <div class="alert alert-danger"> 
 <strong>peringatan!</strong> There were some problems with your input.<br><br> 
 <ul> 
-
 @foreach ($errors->all() as $error) 
 <li>{{ $error }}</li> 
 @endforeach 
@@ -22,7 +21,7 @@
 </div> 
 @endif 
 
-<form action="{{ route('posts.store') }}" method="POST"> 
+<form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data"> 
 @csrf 
 <div class="row"> 
 <div class="col-xs-12 col-sm-12 col-md-12"> 
@@ -30,16 +29,20 @@
 <strong>Title:</strong> 
 <?php $id = Session::get ('id'); ?>
 <input type="text" name="user_id" value="<?=$id?>" hidden> 
-
 <input type="text" name="title" class="form-control" placeholder="Title">
 </div> 
 </div> 
 <div class="col-xs-12 col-sm-12 col-md-12"> 
 <div class="form-group"> 
 <strong>Content:</strong> 
-<textarea class="form-control" style="height:10px" name="content" placeholder="Content"></textarea> 
+<textarea class="form-control" style="height:100px" name="content" placeholder="Content"></textarea> 
 </div> 
-</div> 
+</div>
+<div class="custom-file">
+                <input type="file" name="file" id="chooseFile" class="custom-file-input" id="chooseFile">
+                <input type="text" name="post_id" value="<?='2'?>" hidden>
+                <label class="custom-file-label" for="chooseFile">Select file</label>
+            </div> 
 <div class="col-xs-12 col-sm-12 col-md-12 text-center"> 
 <button type="submit" class="btn btn-primary">Submit</button> 
 </div> 

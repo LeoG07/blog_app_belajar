@@ -12,9 +12,9 @@ class CommentController extends Controller
  public function index()
     {
 
-        $posts = DB::table('comment') 
+        $posts = DB::table('posts') 
             
-            ->join ( 'posts' , 'comment.post_id', '=', 'posts.id')->latest('posts.created_at')
+            ->join ( 'comment' , 'posts.id', '=', 'comment.post_id')->latest('posts.created_at')
             ->paginate(5);
           
         $comments = DB::table('comment') 

@@ -59,7 +59,12 @@ class BlogController extends Controller
         ->where('comment_approve', '=', 1)
         ->get();
 
-        return view('blog.post.post',compact('posts', 'comments', 'post'));
+        $image = DB::table('posts') 
+            ->join ( 'images' , 'posts.id', '=', 'images.post_id')
+            ->where('post_id', '=', $id)
+            ->get();
+
+        return view('blog.post.post',compact('posts', 'comments', 'post', 'image'));
     }
 
    

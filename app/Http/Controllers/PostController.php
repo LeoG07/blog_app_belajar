@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Blog;
+use App\Models\Image;
 
 class PostController extends Controller
 {
@@ -50,10 +51,21 @@ class PostController extends Controller
 
         Post::create($request->all());
 
+        $fileModel = new Image;
+        $request->file();
+        $fileName = time().'_'. $request->file->getClientOriginalName();
+        $destinationPath = 'images';
+        $request->file->move(public_path($destinationPath), $fileName);
+        $fileModel->image = $fileName;
+        $fileModel->post_id = 2;
+        $fileModel->file_path = '/images/' . $fileName;
+        $fileModel->save();
+
         return redirect()->route('posts.index')
                         ->with('success','Pembuatan Post Berhasil!!!');
-    }
 
+
+    }
     /**
      * Display the specified resource.
      *

@@ -7,6 +7,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\FileUpload;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -81,3 +83,6 @@ Route::post('comment', [BlogController::class, 'comment'])->name('comment');
 Route::get('/admin/comments', [CommentController::class, 'index']) ;
 
 Route::post('/admin/comments/{id}', [CommentController::class, 'update']) ;
+
+Route::get('/image', [FileUpload::class,'index'])->name('image.index');
+Route::post('/image', [FileUpload::class,'fileUpload'])->name('image.store');
