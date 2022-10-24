@@ -48,7 +48,7 @@ class LoginController extends Controller
     {
         auth()->logout();
     $request->session()->flush();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 
 

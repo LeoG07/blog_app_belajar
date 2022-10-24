@@ -38,11 +38,16 @@
 <textarea class="form-control" style="height:100px" name="content" placeholder="Content"></textarea> 
 </div> 
 </div>
-<div class="custom-file">
-                <input type="file" name="file" id="chooseFile" class="custom-file-input" id="chooseFile">
-                <input type="text" name="post_id" value="<?='2'?>" hidden>
-                <label class="custom-file-label" for="chooseFile">Select file</label>
-            </div> 
+            <div class="col-md-12">
+                <div class="form-group"> 
+                    <strong>Image:</strong> 
+                    <input type="file" name="file" id="chooseFile" class="form-control" id="chooseFile">
+                <input type="text" name="post_id" value="<?php $last_id;?>" hidden>
+                </div>
+            </div>
+               
+             
+             
 <div class="col-xs-12 col-sm-12 col-md-12 text-center"> 
 <button type="submit" class="btn btn-primary">Submit</button> 
 </div> 

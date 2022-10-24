@@ -20,6 +20,7 @@ class BlogController extends Controller
 
         $posts = DB::table('users') 
             ->join ( 'posts' , 'users.id', '=', 'posts.user_id')->latest('posts.created_at')
+            
             ->paginate(5);
             // ->get();
 

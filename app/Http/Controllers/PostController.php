@@ -49,7 +49,8 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        Post::create($request->all());
+        $query = Post::create($request->all());
+        $last_id = $query->id;
 
         $fileModel = new Image;
         $request->file();
@@ -57,12 +58,14 @@ class PostController extends Controller
         $destinationPath = 'images';
         $request->file->move(public_path($destinationPath), $fileName);
         $fileModel->image = $fileName;
-        $fileModel->post_id = 2;
+        $fileModel->post_id = $last_id;
         $fileModel->file_path = '/images/' . $fileName;
         $fileModel->save();
 
+        
+
         return redirect()->route('posts.index')
-                        ->with('success','Pembuatan Post Berhasil!!!');
+                        ->with('success','Pembuatan Post Berhasil!!! dengan ID' . $last_id);
 
 
     }
@@ -102,9 +105,22 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            // 'image' => 'required',
+            // 'file_path' => 'required',
         ]);
 
         $post->update($request->all());
+        $last_id = $post->id;
+
+        $fileModel = new Image;
+        $request->file();
+        $fileName = time().'_'. $request->file->getClientOriginalName();
+        $destinationPath = 'images';
+        $request->file->move(public_path($destinationPath), $fileName);
+        $fileModel->image = $fileName;
+        $fileModel->post_id = $last_id;
+        $fileModel->file_path = '/images/' . $fileName;
+        $fileModel->save();
 
         return redirect()->route('posts.index')
                         ->with('success','Post updated successfully');
