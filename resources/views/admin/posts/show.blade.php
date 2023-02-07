@@ -20,7 +20,8 @@
 <div class="col-xs-12 col-sm-12 col-md-12"> 
 <div class="form-group"> 
 <strong>Content:</strong> 
-{{ $post->content }} 
+
+<?php echo $post->content ;?> 
 </div> 
 </div> 
 </div> 

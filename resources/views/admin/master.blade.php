@@ -37,6 +37,8 @@
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin <!-- <sup>2</sup> --></div>
             </a>
+            <span style="color:white; text-align:center">{{ Session::get('name'); }}</span>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
@@ -374,7 +376,7 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('')}}admin2/js/demo/chart-area-demo.js"></script>
     <script src="{{ asset('')}}admin2/js/demo/chart-pie-demo.js"></script>
-
+@yield('script')
 </body>
 
 </html>

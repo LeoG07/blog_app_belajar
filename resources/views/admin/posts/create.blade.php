@@ -35,7 +35,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12"> 
 <div class="form-group"> 
 <strong>Content:</strong> 
-<textarea class="form-control" style="height:100px" name="content" placeholder="Content"></textarea> 
+<textarea class="form-control tinymce" style="height:100px" name="content" placeholder="Content"></textarea> 
 </div> 
 </div>
             <div class="col-md-12">
@@ -53,4 +53,15 @@
 </div> 
 </div> 
 </form> 
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.3.1/tinymce.min.js"></script>
+<script>
+   tinymce.init({
+     selector: 'textarea.tinymce', // Replace this CSS selector to match the placeholder element for TinyMCE
+     
+     toolbar: 'undo redo | blocks| bold italic | bullist numlist checklist | code | table'
+   });
+</script>
 @endsection

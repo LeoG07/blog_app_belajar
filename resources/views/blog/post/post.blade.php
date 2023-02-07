@@ -13,8 +13,10 @@
                                 <?php echo $row->title; ?></h1>
                             
                                                         <span class="meta">
+                        <?php }?>
+                            <?php foreach ($user as $users) { ?>
                                 Posted by
-                                <a href="#!">LeoG07</a>
+                                <a href="#!"><?php echo $users->name; ?></a>
                                 on October 04, 2022
                             </span>
                         </div>
@@ -25,10 +27,11 @@
         <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center" style="text-align:justify" >
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                            <p><?php echo $row->content; ?></p>
-                            <p><?php echo $row->id; ?></p>
+                        <h2 style="text-align:left"><?php echo $row->title;  ?></h2>
+                            <p><?php echo $row->content ; ?></p>
+                           <!--  <p><?php echo $row->id; ?></p> -->
                             <br>
                             <?php } ?>
                             Placeholder text by
@@ -55,10 +58,10 @@
                 <div class="d-flex align-items-center mb-3">
                   <p class="mb-0">
                     <?php echo $comment->created_at; ?>
-                    <span class="badge bg-primary">Pending</span>
+                    <span class="badge bg-primary">Approved</span>
                   </p>
-                  <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
-                  <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+               <!--    <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                  <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a> -->
                   <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
                 </div>
                 <p class="mb-0">

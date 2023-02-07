@@ -13,6 +13,7 @@ class DashboardController extends Controller
     {
     $data['users'] = DB::table('users')->count();
     $data['posts'] = DB::table('posts')->count();
+    $data['comment'] = DB::table('comment')->count();
     return view('admin.index', compact('data'));
     }
 }

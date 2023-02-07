@@ -82,7 +82,12 @@ Route::post('comment', [BlogController::class, 'comment'])->name('comment');
 
 Route::get('/admin/comments', [CommentController::class, 'index']) ;
 
-Route::post('/admin/comments/{id}', [CommentController::class, 'update']) ;
+// route status comment
+Route::post('/admin/comments/{id}/pending', [CommentController::class, 'pending']) ;
+Route::post('/admin/comments/{id}/approve', [CommentController::class, 'approve']) ;
+Route::post('/admin/comments/{id}/reject', [CommentController::class, 'reject']) ;
+Route::get('/admin/comments/{id}/delete', [CommentController::class, 'destroy']) ;
+
 
 Route::get('/image', [FileUpload::class,'index'])->name('image.index');
 Route::post('/image', [FileUpload::class,'fileUpload'])->name('image.store');

@@ -48,6 +48,11 @@ class BlogController extends Controller
         $posts = DB::table('posts')
                 ->where('id', '=', $id)
                 ->get();
+
+        $user = DB::table('users') 
+            ->join ( 'posts' , 'users.id', '=', 'posts.user_id')
+            ->where('posts.id', '=', $id)
+            ->get();
         // echo var_dump($users);
 
         // $comments = DB::table('posts')
@@ -65,7 +70,7 @@ class BlogController extends Controller
             ->where('post_id', '=', $id)
             ->get();
 
-        return view('blog.post.post',compact('posts', 'comments', 'post', 'image'));
+        return view('blog.post.post',compact('posts', 'comments', 'post', 'image', 'user'));
     }
 
    

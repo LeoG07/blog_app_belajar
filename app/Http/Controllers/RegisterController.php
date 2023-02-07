@@ -20,6 +20,7 @@ class RegisterController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
+            'email_verified_at' => 'required|same:email',
             'password' => 'required',
             'password_confirm' => 'required|same:password',
         ]);
@@ -27,11 +28,12 @@ class RegisterController extends Controller
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
+            'email_verified_at' => $request->email_verified_at,
             'password' => Hash::make($request->password),
         ]);
         $user->save();
 
-        return redirect()->route('login')->with('success', 'Registrasi Berhasil. Silahkan L ogin!');
+        return redirect()->route('login')->with('success', 'Registrasi Berhasil. Silahkan Login!');
     }
 
 
